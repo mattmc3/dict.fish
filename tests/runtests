@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+
+set --local prjdir (path resolve (status dirname)/..)
+set --local doctest_dir $prjdir/.cache/doctest.fish
+set --local doctest $doctest_dir/doctest.fish
+
+if not test -d $doctest_dir
+	git clone --depth 1 --quiet https://github.com/aureliojargas/doctest.fish $doctest_dir
+end
+
+$doctest $prjdir/tests/*.md
