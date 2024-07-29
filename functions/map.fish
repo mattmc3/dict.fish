@@ -23,7 +23,6 @@ function __map_contains --no-scope-shadowing
     __map_check_mapname $mapname; or return $status
     set --local -- themap $$mapname
 
-    set --local str $argv[2]
     set --local start 1
     set --local step 1
     set --local found 0
@@ -34,16 +33,8 @@ function __map_contains --no-scope-shadowing
         set step 2
     end
 
-    # echo "mapname: $mapname"
-    # echo "start: $start"
-    # echo "step: $step"
-    # echo "count:" (count $themap)
-    # echo "_flag_key: $_flag_key"
-    # echo "_flag_value: $_flag_value"
-    # echo "_flag_index: $_flag_index"
-
     for idx in (seq $start $step (count $themap))
-        if test $themap[$idx] = "$str"
+        if test $themap[$idx] = $argv[2]
             if set -q _flag_index
                 if set -q _flag_value
                     echo $idx
@@ -82,19 +73,23 @@ function map \
         set -- themap $$mapname
         __map_check_mapname $mapname; or return $status
     end
+    set --local mapsize (count $themap)
 
     switch $subcommand
         case keys
-            for idx in (seq 1 2 (count $themap))
+            test $mapsize -gt 0; or return 0
+            for idx in (seq 1 2 $mapsize)
                 echo $themap[$idx]
             end
         case values
-            for idx in (seq 2 2 (count $themap))
+            test $mapsize -gt 0; or return 0
+            for idx in (seq 2 2 $mapsize)
                 echo $themap[$idx]
             end
         case get
+            test $mapsize -gt 0; or return 1
             set --local key $argv[2]
-            for idx in (seq 1 2 (count $themap))
+            for idx in (seq 1 2 $mapsize)
                 if test $themap[$idx] = "$key"
                     echo $themap[(math $idx + 1)]
                     return 0
@@ -104,7 +99,11 @@ function map \
         case set
             set --local key $argv[2]
             set --local value "$argv[3..]"
-            set --local mapsize (count $themap)
+            if test $mapsize -eq 0
+                set $mapname $key $value
+                return 0
+            end
+
             for idx in (seq 1 2 $mapsize)
                 if test $themap[$idx] = "$key"
                     if test $idx -eq 1
