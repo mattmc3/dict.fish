@@ -1,6 +1,6 @@
 # dict.fish
 
-> Treat a paired array variable like a key/value dictionary in Fish
+> Treat a key/value paired array like a dictionary in Fish
 
 The Fish shell lacks the concept of a key/value dictionary. Sometimes referred to as an
 "associative array", shells like [Zsh][zsh-assoc-arr] and [Bash][bash-assoc-arr] already
