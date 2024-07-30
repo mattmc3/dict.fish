@@ -1,0 +1,37 @@
+#!/usr/bin/env fish
+
+set fruits \
+    banana yellow \
+    apple red \
+    grape green
+
+echo "dict -h"
+dict -h
+echo
+echo "dict keys:"
+dict keys fruits
+echo
+echo "dict values:"
+dict values fruits
+echo
+echo "dict get:"
+dict get fruits apple
+echo
+echo "dict set:"
+dict set fruits orange orange; echo $fruits
+echo
+echo "dict remove:"
+dict remove fruits orange; echo $fruits
+echo
+echo "dict contains:"
+dict contains --key fruits apple; and echo "found"; or echo "not found"
+echo
+echo "dict contains index:"
+dict contains -ki fruits apple; and echo "found"; or echo "not found"
+echo
+count $numbers
+
+# ________________________________________________________
+# Executed in   67.39 millis    fish           external
+#    usr time   32.66 millis   47.00 micros   32.62 millis
+#    sys time   25.09 millis  683.00 micros   24.41 millis

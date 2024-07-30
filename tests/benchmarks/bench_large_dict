@@ -1,0 +1,34 @@
+#!/usr/bin/env fish
+
+set numbers (seq 0 5 10000)
+
+echo "dict -h"
+dict -h
+echo
+echo "dict keys:"
+dict keys numbers
+echo
+echo "dict values:"
+dict values numbers
+echo
+echo "dict get:"
+dict get numbers 8000
+echo
+echo "dict set:"
+dict set numbers -1 -1; echo $numbers
+echo
+echo "dict remove:"
+dict remove numbers -1; echo $numbers
+echo
+echo "dict contains:"
+dict contains --key numbers 8000; and echo "found"; or echo "not found"
+echo
+echo "dict contains index:"
+dict contains -ki numbers 8000; and echo "found"; or echo "not found"
+echo
+count $numbers
+
+# ________________________________________________________
+# Executed in  121.23 millis    fish           external
+#    usr time   55.55 millis   55.00 micros   55.49 millis
+#    sys time   30.73 millis  776.00 micros   29.96 millis
