@@ -6,8 +6,8 @@ The Fish shell lacks the concept of a key/value dictionary. Sometimes referred t
 "associative array", shells like [Zsh][zsh-assoc-arr] and [Bash][bash-assoc-arr] already
 have this concept built in.
 
-There's an [open issue](https://github.com/fish-shell/fish-shell/issues/390) to add this
-feature, but it's been 12 years and counting...
+There's an [open issue][fish-assoc-arr] to add this feature, but it's been 12 years and
+counting... Hopefully this plugin will tide you over.
 
 This Fish plugin gives you a simple `dict` command, which lets you treat an array like
 it is an associative array.
@@ -87,6 +87,7 @@ If you want to use the original array, sometimes it's nice to use bracketed inde
 
 
 [fisher]: https://github.com/jorgebucaran/fisher
+[fish-assoc-arr]: https://github.com/fish-shell/fish-shell/issues/390
 [bash-assoc-arr]: https://www.gnu.org/software/bash/manual/html_node/Arrays.html
 [zsh-assoc-arr]: https://zsh.sourceforge.io/Doc/Release/Parameters.html#Array-Parameters
 [zsh-param-exp]: https://zsh.sourceforge.io/Doc/Release/Expansion.html#Parameter-Expansion-Flags
