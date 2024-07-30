@@ -1,12 +1,12 @@
-# map.fish
+# dict.fish
 
-> Treat a paired array variable like a key/value map in Fish
+> Treat a paired array variable like a key/value dictionary in Fish
 
-The Fish shell lacks the concept of a key/value map. Sometimes referred to as an
+The Fish shell lacks the concept of a key/value dictionary. Sometimes referred to as an
 "associative array", shells like [Zsh][zsh-assoc-arr] and [Bash][bash-assoc-arr] already
 have this concept built in.
 
-This Fish plugin gives you a simple `map` command, which lets you treat an array like
+This Fish plugin gives you a simple `dict` command, which lets you treat an array like
 it is an associative array.
 
 ## Install
@@ -14,71 +14,71 @@ it is an associative array.
 Use [Fisher][fisher] to install:
 
 ```fish
-fisher install mattmc3/map.fish
+fisher install mattmc3/dict.fish
 ```
 
 ## Usage
 
 Use `--help` to show usage:
 
-    > map --help
-    map [-h|--help]
-    map keys [MAPNAME]
-    map values [MAPNAME]
-    map get [MAPNAME] [KEY]
-    map set [MAPNAME] [KEY] [VALUE]
-    map remove [MAPNAME] [KEY]
-    map contains [-k|--key] [-v|--value] [-i|--index] [MAPNAME] [STRING]
+    > dict --help
+    dict [-h|--help]
+    dict keys [DICTNAME]
+    dict values [DICTNAME]
+    dict get [DICTNAME] [KEY]
+    dict set [DICTNAME] [KEY] [VALUE]
+    dict remove [DICTNAME] [KEY]
+    dict contains [-k|--key] [-v|--value] [-i|--index] [DICTNAME] [STRING]
 
-Let's demonstrate how to use a `map`. We start with a regular Fish array, the only
+Let's demonstrate how to use a `dict`. We start with a regular Fish array, the only
 difference being that the elements of the array are paired
 (eg: `key1 value1 key2 value2 etc..`). Let's declare an array called `fruits` with the
 keys being types of fruit and the values containing the fruit's color.
 
     > set fruits banana yellow cherry red grape purple
 
-To get an element from a map, use the `get` subcommand.
+To get an element from a dictionary, use the `get` subcommand.
 
-    > map get fruits grape
+    > dict get fruits grape
     purple
 
-To set an element from a map, use the `set` subcommand.
+To set an element from a dictionary, use the `set` subcommand.
 
-    > map set fruits lime green
+    > dict set fruits lime green
     > echo $fruits
     lime green banana yellow cherry red grape purple
 
-To remove an element from a map, use the `remove` subcommand.
+To remove an element from a dictionary, use the `remove` subcommand.
 
-    > map remove fruits grape
+    > dict remove fruits grape
     > echo $fruits
     lime green banana yellow cherry red
 
 We can use the `keys` and `values` subcommands to see all the keys and values
 respectively:
 
-    > map keys fruits
+    > dict keys fruits
     lime
     banana
     cherry
-    > map values fruits
+    > dict values fruits
     green
     yellow
     red
 
-Let's say we want to see if a key (or value) exists in the map. We can use the
+Let's say we want to see if a key (or value) exists in the dictionary. We can use the
 `contains` subcommand. If the `--key` flag is provided, only keys are checked.
 Similarly, if `--value` is provided, only values are checked. Otherwise both are. If
 the `--index` flag is provided, then the index is printed.
 
-    > map contains --key fruits cherry; and echo "found"; or echo "not found"
+    > dict contains --key fruits cherry; and echo "found"; or echo "not found"
     found
-    > map contains --value fruits orange; and echo "found"; or echo "not found"
+    > dict contains --value fruits orange; and echo "found"; or echo "not found"
     not found
 
 If you want to use the original array, sometimes it's nice to use bracketed indexing.
 
-    > set key_cherry (map contains -ki fruits cherry)
+    > set key_cherry (dict contains -ki fruits cherry)
     > echo $fruits[$key_cherry]
     red
 
