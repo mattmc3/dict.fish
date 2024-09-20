@@ -17,7 +17,7 @@ function __dict_check_dictname -a dictname
 end
 
 function __dict_contains --no-scope-shadowing
-    argparse --name dict --stop-nonopt -exclusive k,v 'k/key' 'v/value' 'i/index' -- $argv
+    argparse --name dict --stop-nonopt --exclusive k,v 'k/key' 'v/value' 'i/index' -- $argv
     or return
     set --local -- dictname $argv[1]
     __dict_check_dictname $dictname; or return $status
