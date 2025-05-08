@@ -1,11 +1,11 @@
 function __dict_usage
     echo "dict [-h|--help]"
-    echo "dict keys [DICTNAME]"
-    echo "dict values [DICTNAME]"
-    echo "dict get [DICTNAME] [KEY]"
-    echo "dict set [DICTNAME] [KEY] [VALUE]"
+    echo "dict keys <DICTNAME>"
+    echo "dict values <DICTNAME>"
+    echo "dict get <DICTNAME> <KEY>"
+    echo "dict set <DICTNAME> <KEY> <VALUE>"
     echo "dict remove [DICTNAME] [KEY]"
-    echo "dict contains [-k|--key] [-v|--value] [-i|--index] [DICTNAME] [STRING]"
+    echo "dict contains [-k|--key] [-v|--value] [-i|--index] <DICTNAME> <STRING>"
 end
 
 function __dict_check_dictname --no-scope-shadowing -a dictname
