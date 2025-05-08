@@ -26,12 +26,12 @@ Use `--help` to show usage:
 
     > dict --help
     dict [-h|--help]
-    dict keys [DICTNAME]
-    dict values [DICTNAME]
-    dict get [DICTNAME] [KEY]
-    dict set [DICTNAME] [KEY] [VALUE]
-    dict remove [DICTNAME] [KEY]
-    dict contains [-k|--key] [-v|--value] [-i|--index] [DICTNAME] [STRING]
+    dict keys <DICTNAME>
+    dict values <DICTNAME>
+    dict get <DICTNAME> <KEY>
+    dict set <DICTNAME> <KEY> <VALUE>
+    dict remove <DICTNAME> <KEY>
+    dict contains [-k|--key] [-v|--value] [-i|--index] <DICTNAME> <STRING>
 
 Let's demonstrate how to use a `dict`. We start with a regular Fish array, the only
 difference being that the elements of the array are paired
